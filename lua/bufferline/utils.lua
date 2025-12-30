@@ -129,7 +129,7 @@ function M.augroup(definitions)
     vim.cmd("augroup " .. group_name)
     vim.cmd("autocmd!")
     for _, def in pairs(definition) do
-      local command = table.concat(vim.tbl_flatten({ "autocmd", def }), " ")
+      local command = table.concat(vim.iter({ "autocmd", def }):flatten():totable(), " ")
       vim.cmd(command)
     end
     vim.cmd("augroup END")
